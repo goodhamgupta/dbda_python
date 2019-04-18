@@ -1,4 +1,6 @@
 .env/*
 attachements/*
-css/*
+*.css
+*.js
 *.html
+.ipynb_checkpoints
