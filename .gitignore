@@ -4,3 +4,8 @@ attachements/*
 *.js
 *.html
 .ipynb_checkpoints
+*.gz
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
