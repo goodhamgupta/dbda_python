@@ -9,3 +9,4 @@ attachements/*
 *.fdb_latexmk
 *.fls
 *.log
+data/*

@@ -126,6 +126,24 @@
     \end{itemize}
     \section{Extending the hierachy}
     \begin{itemize}
-        \item Didn't really understand this. I'll work through the problems and come back to update the notes.
+        \item We can model problems as hierachical models of multiple levels.
+        \item Baseball players
+            \begin{itemize}
+                \item They bat. Sometimes they get a hit. 
+                \item Different positions for each player. Categorize by player positions.
+                \item Hence, we can estimate abilities for each player AND each position.
+            \end{itemize}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.3\textwidth]{baseball_model}
+            \caption{Baseball Hierachical model}
+            \label{fig:}
+        \end{figure}
+        \begin{itemize}
+            \item Each player is denoted by $s$.
+            \item Number of oppourtunities to bat: $N_{s|c}$.
+            \item Number of hits: $z_{s|c}$
+            \item Primary position of a player:  $c_{s}$
+        \end{itemize}
     \end{itemize}
 \end{document}
