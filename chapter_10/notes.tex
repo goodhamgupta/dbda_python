@@ -52,4 +52,29 @@
             \label{fig:bayes_factor}
         \end{figure} 
 \end{itemize}
+\section{Head biased vs tail biased factories}
+\begin{itemize}
+    \item Two factories that produce head-biased and tail biased factories. Given we have seen some tosses, which factory did the coin come from?
+    \item We have the following hierachy
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{coin_model_hierachy}
+            \caption{Coin Model Hierachy}
+            \label{fig:coin_model_hierachy}
+        \end{figure}
+\end{itemize}
+\subsection{MCMC Method: Individual models}
+\begin{itemize}
+    \item Main formula to compute the probability of the data is:
+    \[
+        \frac{1}{p(D)} = \frac{1}{N} \sum_{n=\theta_{i} \tilde p(\theta|D)}^{N} \frac{h(\theta_{i})}{p(D|\theta_{i}) p(\theta_{i})} 
+    .\]     
+\item $h(\theta_{i}$ is a probability density function. There is a complex derivation to this formula, which we are skipping for now. Refer to page 275.
+\end{itemize}
+\subsection{MCMC Method: Hierachical model}
+\begin{itemize}
+    \item Similar to pymc3 models you have used. Use a index `m` to indicate for which model are the parameters being specified.
+    \item 
+\end{itemize}
+
 \end{document}
