@@ -74,7 +74,57 @@
 \subsection{MCMC Method: Hierachical model}
 \begin{itemize}
     \item Similar to pymc3 models you have used. Use a index `m` to indicate for which model are the parameters being specified.
-    \item 
+    \item The chain will be highly corelated with model index. 
+    \item Chains will linger on one model for a long time. It will take a lot of iterations for the chains to explore both models equally.
+    \item We can solve this using pseudo-priors.
 \end{itemize}
 
+\subsection{Why chains get stuck?}
+\begin{itemize}
+    \item At a step for which m=1, $\theta_{1}$ is used to descibe the data. However, $\theta_{2}$ is not bounded and is sampled randomly from prior. Vice-versa for m=2. 
+    \item The prior might be very far away from the posterior. Because the other $\theta_{m = other}$ is a poor description of the data, the chain rarely jumps to it.
+    \item \textbf{Solution}: For the parameter currently not being used, make it mimic the posterior. This way, it will always stay in the credible range of values.
+\end{itemize}
+\subsubsection{Values for pseudopriors}
+\begin{itemize}
+    \item Do initial run with pseudo prior set to true prior. Note characteristics of marginal distribution of the posterior. 
+    \item Set pseudoprior values that mimic the current posterior. Run analysis and do step 1 again. Repeat this analysis if the pseudo-prior values are very different from the previous values you had.
+\end{itemize}
+\subsection{Model Averaging}
+\begin{itemize}
+    \item Instead of picking the best model that we got from the posterior analysis, we should instead do a weighted average of all the models.
+    \item This is because our initial hierachical model took into account the posterior distributions from all models, rather than one single model.
+    \item We can obtain this by using the following formula for the weighted averages:
+    \[
+        \sum_{m} p(\hat{y}|D, m) p(m | D)
+    .\] 
+    \[
+        = \sum_{m} \int d \theta_{m}p_{m}(\hat{y}|\theta_{m}, m)p_{m}(\theta_{m}|D, m) p(m|D)
+    .\] 
+    This is called \textbf{model averaging}.
+\end{itemize}
+\subsection{Accounting for model complexity}
+\begin{itemize}
+    \item Complex models can find relationships between more variable BUT are more sensitive to noise.
+    \item We need a way to measure model complexity, since the noisy data will always prefer more complex models(overfitting).
+    \item Simple models can win if the data is in the same range the prior. This is because in simple models, the prior is restricted to a specific parameter space. In complex models, because the prior is spread over a very large space, the posterior distributions are not as strong as the simple model.
+\end{itemize}
+\subsection{Comparing nested models}
+\begin{itemize}
+    \item Suppose there is a model with many parameters that can describe the data very well.
+    \item Now, we define some restrictions on the above parameters(lower bound 0, setting them equal to each other, etc.)
+    \item Such a model can be "nested" in the original model.
+    \item Here, the Bayesian model comparison will prefer the restricted model, because the full-model has a large prior diluted parameter space.
+    \item \textbf{If prior probability of model is 0, then posterior probability is also 0.}
+\end{itemize}
+\subsection{Sensitive to prior distribution}
+\begin{itemize}
+    \item Bayesian model comparison is extremely sensitive to the prior distribution.
+    \item Different priors and yield different Bayes factor's. 
+    \item For uninformative priors, prefer \textbf{Haldane's prior}
+    \item For Haldane's prior, the parameters are very close to 0. It is still a beta distribution. 
+        \[
+        a = b = 0.01
+        .\] 
+\end{itemize}
 \end{document}
