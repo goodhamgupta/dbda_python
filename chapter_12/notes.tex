@@ -1,0 +1,55 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath, graphicx, float, blindtext} % for dummy text
+\graphicspath{ {./images/} }
+\title{Bayesian Approaches to Testing "Null" Hypothesis}
+\author{Shubham Gupta}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+\begin{itemize}
+    \item We will descibe bayesian approaches to Null hypothesis testing.
+    \item Suppose we want to check if a coin is fair i.e $\theta$ =0.5.
+    \item We can check if $\theta=0.5$ falls in the HDI of the posterior.
+    \item For the prior, we can:
+        \begin{itemize}
+            \item Take a prior which only allows $\theta=0.5$ 
+            \item Take a prior which allows many values of $\theta$.
+        \end{itemize}
+    \item We will compare the models using Bayesian model comparison i.e Bayes factor.
+\end{itemize}
+\section{Estimation approach}
+\subsection{ROPE}
+\begin{itemize}
+    \item \textbf{Region of Practical Equivalence}: Values around the initial null hypothesis that are considered equal for practical purposes. 
+    \item If ROPE lies outside 95\% HDI, then we will reject the null hypothesis.
+    \item When HDI and ROPE overlap, and ROPE does not contain HDI completely, we \textbf{withhold a decision.}  
+    \item Marginal distributions of two parameters do not indicate the relationship between the parameter values.(It might have positive or negative corelalation. Hence, values should be examined closely.)
+\end{itemize}
+\section{Model Comparison Approach}
+\begin{itemize}
+    \item Model comparsion will be \textbf{extremely} sensitive to the chosen \textit{uninformed} distribution. 
+    \item In this approach, one model has a prior equal to the null value. Other model has a uniform prior. The aim is to find which of the two models will give an output that is most credible(or least incredible).
+\end{itemize}
+\subsection{Bayes factor can accept poor null decision}
+\begin{itemize}
+    \item \textbf{Do not} use only Bayes factor when deciding whether to accept the null hypothesis or not. Always look at the HDI of the posterior. 
+    \item Example on the effect of music on the retention of words for people is demonstrated.
+    \item Demonstrate effect of 4 different types of background music. For the first model, we use different parameters for each genre of music. For the 2nd model, we consider all genres the same and use one model.
+    \item Since there will always be some difference between the music presented, we should go with the model that uses a different parameter for each group.
+\end{itemize}
+\subsection{Relation of parameter estimation and model comparison}
+\begin{itemize}
+    \item For assessing null value, we have the following two appraches:
+        \begin{itemize}
+            \item \textbf{Model comparison}: Use a threshold value for the Bayes factor. 
+            \item \textbf{Parameter comparison}: Add threshold on the parameters to be estimated(using ROPE and HDI). 
+        \end{itemize}
+\end{itemize}
+\subsection{Estimation or Comparison}
+\begin{itemize}
+    \item Generally, estimation approach is better.
+    \item For model comparison, \textbf{both} priors should be meaningful and informed. 
+\end{itemize}
+\end{document}

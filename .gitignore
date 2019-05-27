@@ -10,3 +10,4 @@ attachements/*
 *.fls
 *.log
 data/*
+.DS_Store
