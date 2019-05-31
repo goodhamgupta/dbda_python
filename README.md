@@ -4,4 +4,4 @@ Notes and solutions for the exercises present in the book "Doing Bayesian Data A
 
 # Credits
 
-This repository is heavily influenced by Osvaldo Martin's solutions(available [here](https://github.com/aloctavodia/Doing_bayesian_data_analysis)) and Jordi Warmenhoven's solutions(available [here](https://github.com/JWarmenhoven)).
+This repository is heavily influenced(and some solutions are exact copies) by Osvaldo Martin's solutions(available [here](https://github.com/aloctavodia/Doing_bayesian_data_analysis)) and Jordi Warmenhoven's solutions(available [here](https://github.com/JWarmenhoven)).
