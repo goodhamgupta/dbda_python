@@ -1,0 +1,79 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath, graphicx, float, blindtext} % for dummy text
+\graphicspath{ {./images/} }
+\title{How to become a Bayesian}
+\author{Shubham Gupta}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+\begin{itemize}
+    \item This is a review of the paper presented here: https://nicebrain.files.wordpress.com/2016/02/etz-etal-preprint-how-to-become-a-bayesian.pdf
+    \item I will try to summarize the materials provided in the paper for reference.
+\end{itemize}
+\section{Theoritical Sources}
+\begin{itemize}
+    \item Discuss three sources which will show the primary ideas around Bayesian inference.
+\end{itemize}
+\subsection{What is Bayesian Inference}
+\begin{itemize}
+    \item Source: http://web.archive.org/web/20160110224503/http://www2.isye.gatech.edu/~brani/isyebayes/bank/lindleybayeslady.pdf
+    \item Fisher discusses the probability of getting null hypothesis and anything more extreme than it. This is called the \textbf{p-value}.  
+    \item Lindley shows that p-value depends on how the experiment was conducted and the definition of the term \textbf{extreme results} influences the p-value. 
+    \item If something is assumed, a appropriate prior should be assigned to this assumption so that it maximizes the change of the assumption to be true \textbf{but also} gives other possible values(the one's not included in the assumption) some probability. 
+    \item This method depends only on \textbf{observed data.}  
+\end{itemize}
+\subsection{Bayesian Credibility Assignments}
+\begin{itemize}
+    \item Source: John Krushcke DBDA(Chapter 2)
+    \item Relocate probability of an outcome occuring depending on the evidence gathered. In the chapter, JK uses the example of Sherlock Holmes.
+    \item Generally talks about how to reallocate probabilities and consider new evidence. 
+\end{itemize}
+\subsection{Implications of bayesian statistics for experimental psychology}
+\begin{itemize}
+    \item Source: http://tinyurl.com/dienes2011
+    \item Explains differences between frequentist and Bayesian paradigms.
+    \item Bayesian methods nature allow inclusion of problem-specific knowledge in the statistical model.
+    \item Frequentist allows $P(data|theory)$.
+    \item Bayesian allows  $P(theory|data)$.
+\end{itemize}
+\subsubsection{Stopping rules}
+\begin{itemize}
+    \item For frequentist approach, p-value is allowed to be all possible values(i.e not just the null hypothesis).
+    \item Due to this, even if more data is collected, it will not affect the p-value.
+    \item Also, \textbf{even if there is no effect}, we will always obtain a statistically significant result. 
+    \item For Bayesian approach, collecting more data will help prove null hypothesis is true/false.
+    \item This is because if null hypothesis is true, \textbf{Bayes factor} will tend to infinity when the amount of data collected keeps increasing. 
+\end{itemize}
+\subsubsection{Planned versus post hoc comparisons}
+\begin{itemize}
+    \item In classifical hypothesis testing, it matters if hypothesis was made before or after data collection.
+    \item For Bayesian apporach, it does not matter.
+\end{itemize}
+\subsubsection{Multiple Testing}
+\begin{itemize}
+    \item For classical appraoch, number of tests matter when testing multiple thesis.
+    \item For Bayesian, number does not matter. Evaluation of accuracy of each hypothesis that predicts the data matters the most.
+\end{itemize}
+\subsubsection{Context-dependent Bayes factors}
+\begin{itemize}
+    \item Two schools of Bayes: Objective and Subjective.
+    \begin{table}[H]
+        \centering
+        \caption{Bayesian Schools}
+        \label{tab:label}
+        \begin{tabular}{|c|c|}
+           \hline
+           \textbf{Objective} & \textbf{Subjective}  \\
+           Fixed BF with specific maths properties & Allows BF that incorporate specific knowledge. \\
+           Use standardized effect sizes & Specify prior distributions in terms of raw effect size. \\
+           \hline
+        \end{tabular}
+    \end{table}
+\end{itemize}
+\subsection{Structure and motivation of Bayes factors}
+\begin{itemize}
+    \item Bayes factor shows predictive success of two(or more) models.
+\end{itemize}
+\end{document}
