@@ -47,8 +47,9 @@
         .\] 
     \item Proposal distribution can be "tuned" by:
     \begin{enumerate}
-        \item adjusting step size called \textbf{epsilon(or eps)}
-        \item adjusting number of steps taken.
+        \item Adjusting step size called \textbf{epsilon(or eps)}
+        \item Adjusting number of steps taken.
+        \item Standard deviation of the distribution from which the momentum is selected.
     \end{enumerate}
     \item Step size $\implies$ Time taken to make a step. Hence, it is called \textbf{Steps*Eps}  
     \item General acceptance rate is 62\%.
@@ -63,5 +64,55 @@
         \label{fig:trajectory_lengths}
     \end{figure}
     \item Duration is important because we want proposed position closer to mode of posterior distribution.
+    \item As shown in figure, long trajectories overshoot the mode and return to the current position.
+    \item \textbf{NUTS}(No U-Turn Sampling) algorithm stops trajectories before they make a U-turn and return to the starting position. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{sd_proposal_distributions}
+        \caption{HMC proposal distributions for different standard deviation}
+        \label{fig:sd_proposal_distributions}
+    \end{figure}
+    \item Standard deviation of momentum distribution wider $\implies$ Wider posterior
+    \item SD of momentum distribution is selected in Stan using adaptive algorithms. It usually matches the SD of the posterior.
+    \item Because it is difficult to find the gradient of functions spanning multiple dimensions, usual method is:
+        \begin{enumerate}
+            \item Take half step in direction of gradient and update momentum
+            \item Alternate full steps along gradients of potential and momentum
+            \item Finally another half step of momentum(called \textbf{leapfrog} method). 
+        \end{enumerate}
+
+\end{itemize}
+\subsection{Stan}
+\begin{itemize}
+    \item For number of iterations, use the following formula for stan:
+    \[
+        chains = \frac{\text{(desired chains) * (iter - warmup)}}{\text{thin}}
+    .\] 
+\end{itemize}
+\subsubsection{General structure}
+\begin{itemize}
+    \item Stan code can be organized as follows:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{stan_structure}
+        \caption{General structure of stan code}
+        \label{fig:stan_structure}
+    \end{figure} 
+    \item Stan HMC works with probability of log posterior distribution and it's gradient. There is \textbf{no direct random sampling} of parameters from distributions.   
+    \item Hence, $y$ \textasciitilde $normal(mu, sigma)$ $\implies$ $\text{current posterior probability} * \text{density of normal distribution at} y$
+    \item Therefore,
+    \[
+        normal(mu, sigma) = \text{incrementlogprob}(\text{normallog}(y, mu, sigma))
+    .\] 
+\end{itemize}
+\subsubsection{Sampling the prior in Stan}
+\begin{itemize}
+    \item Comment out likelihood statement from model definition to sample from prior.
+    \item In stan, mdoels will be defined in top-down order. Model are specified as follows:
+        \begin{enumerate}
+            \item Top level of the prior
+            \item Lower level dependencies
+            \item Likelihood of data
+        \end{enumerate}
 \end{itemize}
 \end{document}
