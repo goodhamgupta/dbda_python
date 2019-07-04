@@ -35,17 +35,17 @@
 \subsection{Linear function of a single metric predictor}
 \begin{itemize}
     \item Linear functions preserver proportinality.
-    \[
-    y = \beta_0 + \beta_1x
-    .\] 
+        \[
+            y = \beta_0 + \beta_1x
+        .\] 
     \item This type of equation is called an \textbf{affine}. 
 \end{itemize}
 \subsection{Additive combination of metric predictors}
 \begin{itemize}
     \item Add predictor variables for combined effect. 
-    \[
-    y = \beta_0 + \sum_{k=1}^{K} \beta_kx_k
-    .\] 
+        \[
+            y = \beta_0 + \sum_{k=1}^{K} \beta_kx_k
+        .\] 
 \end{itemize}
 \subsection{Non additive interaction of metric predictors}
 \begin{itemize}
@@ -55,32 +55,98 @@
 \subsubsection{Linear model for a single nominal predictor}
 \begin{itemize}
     \item Also called as \textbf{one hot encoding}. Split the nomial variables into multiple columns to model the problem. 
-    \[
-        y = \beta_0 + \beta_{[1]}x_{[1]} + \beta_{[2]}x_{[2]} + \ldots  
-    .\] 
-    \[
-        y = \beta_0 + \vec{\beta} . \vec{x} 
-    .\] 
+        \[
+            y = \beta_0 + \beta_{[1]}x_{[1]} + \beta_{[2]}x_{[2]} + \ldots  
+        .\] 
+        \[
+            y = \beta_0 + \vec{\beta} . \vec{x} 
+        .\] 
 \end{itemize}
 \subsubsection{Additive combination of nominal predictors}
 \begin{itemize}
     \item Effect of multiple nominal predictors combinations can be represented by:
-    \[
-        y = \beta_0 + \sum_{n}\beta_{1[j]}x_{1[j]} + \sum_{n}\beta_{2[k]}x_{2[k]} + \ldots
-    .\] 
+        \[
+            y = \beta_0 + \sum_{n}\beta_{1[j]}x_{1[j]} + \sum_{n}\beta_{2[k]}x_{2[k]} + \ldots
+        .\] 
 \end{itemize}
 \subsubsection{Nonadditive interaction of nominal predictors}
 \begin{itemize}
     \item $\vec{x}_{1x2}$ refers to a particular combination of values from $\vec{x_1}$ and $\vec{x_2}$.
     \item Nonadditive interaction is represented by:
-    \[
-        y = \beta_0 + \beta_{[1]}x_{[1]} + \beta_{[2]}x_{[2]} + \vec{\beta_{1x2}} . \vec{x_{1x2}} 
-    .\] 
+        \[
+            y = \beta_0 + \beta_{[1]}x_{[1]} + \beta_{[2]}x_{[2]} + \vec{\beta_{1x2}} . \vec{x_{1x2}} 
+        .\] 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{linear_functions}
+            \caption{Typical linear functions}
+            \label{fig:linear_functions}
+        \end{figure}
+\end{itemize}
+\subsection{Linking from combined predictors to noisy predicted data}
+\subsubsection{From predictors to predicted central tendency}
+\begin{itemize}
+    \item Preditor variables need to be mapped to predicted variable. This is called \textbf{(inverse) link function}.
+        \[
+            y = f(lin(x))
+        .\] 
+    \item $f$ is also called \textbf{mean} function as it generally represents the central measure of the data. 
+\end{itemize}
+\subsubsection{Logistic function}
+\begin{itemize}
+    \item Logistic function can be written as:
+        \[
+            y = \frac{1}{1+\exp^{-x}} 
+        .\] 
+    \item The value ranges between 0 and 1.
+    \item It can be expressed with gain $\gamma$ and threshold $\theta$.
+        \begin{itemize}
+            \item $\theta$ Point on x-axis for which $y=0.5 $.
+            \item $\gamma$ indicates how steeply logistic function rises through a point.
+        \end{itemize}
+        \[
+            y = logistic(x;y,\theta) = \frac{1}{1+\exp(-y(x-\theta))}
+        .\] 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{logistic_function}
+            \caption{Threshold and Gain values for logistic function}
+            \label{fig:logistic_function}
+        \end{figure}
+    \item For logistic function with multiple variables, we will use the normalized form:
+        \[
+            y = logistic(y \sum_{k} w_kx_k-\theta))
+        .\] 
+    \item It also has the following condition:
+        \[
+            (\sum_{k} w_k^2)^\frac{1}{2} = 1
+        .\] 
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.8\textwidth]{multi_variable_logistic}
+            \caption{Logistic functions of two variables}
+            \label{fig:multi_variable_logistic}
+        \end{figure}
+    \item Coefficients of $x_1$ and $x_2$ determine the \textbf{oritentation} of the cliff. 
+    \item Threshold $\theta$ determines the \textbf{position} of the logistical cliff.   
+    \item Gain $\gamma$ determines steepness of the logistical cliff.
+    \item Inverse of logistic function is called \textbf{logit} function. 
+        \[
+            \text{For } 0 < p < 1, logit(p) = log([\frac{p}{1-p}])
+        .\] 
+\end{itemize}
+\subsubsection{The cumalative normal function}
+\begin{itemize}
+    \item Generally used when we can model a variable as continous with normally distributed variability.
+    \item Denoted as: $\phi(x; \mu, \sigma)$
+    \item $mu$ is similar to threshold($\theta$ ) of logistic function.
+    \item $\sigma$ is the inverse of gamma($\gamma$ ) value in logistic function i.e smaller value of $\sigma \implies$ steeper cumalative normal.
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.8\textwidth]{linear_functions}
-        \caption{Typical linear functions}
-        \label{fig:linear_functions}
+        \includegraphics[width=0.8\textwidth]{cumalative_normal}
+        \caption{Cumalative normal}
+        \label{fig:cumalative_normal}
     \end{figure}
+    \item Inverse of cumalative normal is called \textbf{probit} function. Probit maps value between 0.0 and 1.0 
 \end{itemize}
 \end{document}
