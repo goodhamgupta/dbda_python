@@ -149,4 +149,40 @@
     \end{figure}
     \item Inverse of cumalative normal is called \textbf{probit} function. Probit maps value between 0.0 and 1.0 
 \end{itemize}
+\subsection{Predicted central tendency to noisy data}
+\begin{itemize}
+    \item We can always only predict the \textbf{probability} that y will be equal to some value. Due to this, we do not equate $y = f(lin(x))$ but instead we say it will be  \textbf{near} that value.  
+    \item Hence, we use the \textbf{probability density function}. If $\mu$ represents some central tendency(need not always be mean), then we have:
+    \[
+        y \sim pdf(\mu, [scale, shape, etc.])
+    .\] 
+    \item \textbf{pdf} is affected by parameters such as scale, shape, etc. 
+    \item Typical link functions and pdfs for various predicted variables are:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{typical_link_pdf}
+        \caption{Link functions and PDF for different y variables}
+        \label{fig:typical_link_pdf}
+    \end{figure}
+\end{itemize}
+\subsection{Formal expression of the GLM}
+\begin{itemize}
+    \item GLM can be written as follows:
+    \[
+        \mu = f(lin(x), [parameters])
+    .\] 
+    \[
+        y \sim pdf(\mu, [parameters])
+    .\] 
+\end{itemize}
+\subsubsection{Cases of GLM}
+\begin{itemize}
+    \item The table below tells us how to figure out which data can be predictors and which data cna be predicted:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{glm_table}
+        \caption{Generic table for GLM}
+        \label{fig:glm_table}
+    \end{figure}
+\end{itemize}
 \end{document}
